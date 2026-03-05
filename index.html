@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+
+<body>
+
+<div class="container">
+<h2 class="title">Registration Form</h2>
+<form>
+
+<label>Name</label><br>
+<input type="text" id="name" placeholder="Enter your Name" onkeyup="validateForm()">
+<p id="nameError" style="color:red"></p>
+
+<label>Email</label><br>
+<input type="text" id="email" placeholder="Enter your email" onkeyup="validateForm()">
+<p id="emailError" style="color:red"></p>
+
+<label>Password</label><br>
+<input type="password" id="password" placeholder="Enter password" onkeyup="validateForm()">
+<p id="passwordError" style="color:red"></p>
+
+<button id="submitBtn" disabled>Submit</button>
+
+</form>
+</div>
+
+<style>
+
+body{
+font-family: Arial;
+background-color:#fafafa;
+}
+
+.title{
+text-align:center;
+color:rgb(5, 5, 5);
+}
+
+.container{
+width:500px;
+height:400px;
+margin:auto;
+background-color:#b2c9ec;
+padding:25px;
+border-radius:8px;
+box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+
+}
+
+input{
+width:100%;
+padding:8px;
+margin-top:5px;
+margin-bottom:10px;
+border:1px solid #ccc;
+border-radius:4px;
+}
+
+.error{
+color:red;
+font-size:13px;
+margin:0;
+}
+
+.btnBox{
+text-align:center;
+margin-top:10px;
+}
+
+#submitBtn{
+background-color:#28a745;
+color:white;
+border:none;
+padding:8px 20px;
+border-radius:4px;
+cursor:pointer;
+}
+
+#submitBtn:disabled{
+background-color:gray;
+cursor:not-allowed;
+}
+@media (max-width:600px)
+{
+    .container{
+        padding:20px;
+        width:400px;
+    }
+h2{
+    font-size:20px;
+}
+}
+</style>
+
+<script>
+    function validateForm()
+{
+    var name=document.getElementById("name").value
+    var email=document.getElementById("email").value
+    var password=document.getElementById("password").value
+
+    var nameError=document.getElementById("nameError")
+    var emailError=document.getElementById("emailError")
+    var passwordError=document.getElementById("passwordError")
+
+    var submitBtn=document.getElementById("submitBtn")
+
+    var valid=true
+
+
+    // Name validation
+     var namePattern=/^[A-Za-z ]+$/
+
+    if(name=="")
+    {
+        nameError.innerHTML="Name cannot be empty"
+        valid=false
+    }
+    else if(!name.match(namePattern))
+    {
+        nameError.innerHTML="Name must contain only alphabets"
+        valid=false
+    }
+    else
+    {
+        nameError.innerHTML=""
+    }
+
+
+    // Email validation
+    var emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+
+    if(!email.match(emailPattern))
+    {
+        emailError.innerHTML="Enter a valid email"
+        valid=false
+    }
+    else
+    {
+        emailError.innerHTML=""
+    }
+
+
+    // Password validation
+    if(password.length<6 || password.length>12)
+    {
+        passwordError.innerHTML="Password must be between 6 and 12 characters"
+        valid=false
+    }
+    else
+    {
+        passwordError.innerHTML=""
+    }
+
+
+    // Enable button only if valid
+    submitBtn.disabled=!valid
+}
+</script>
+</body>
+</html>
