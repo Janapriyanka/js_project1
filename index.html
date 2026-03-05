@@ -32,8 +32,13 @@
 <style>
 
 body{
-font-family: Arial;
-background-color:#fafafa;
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background-color:#f4f6f8;
+font-family:Arial, sans-serif;
 }
 
 .title{
@@ -43,7 +48,7 @@ color:rgb(5, 5, 5);
 
 .container{
 width:500px;
-height:400px;
+height:500px;
 margin:auto;
 background-color:#b2c9ec;
 padding:25px;
@@ -76,6 +81,8 @@ margin-top:10px;
 background-color:#28a745;
 color:white;
 border:none;
+display:block;
+margin:auto;
 padding:8px 20px;
 border-radius:4px;
 cursor:pointer;
@@ -147,15 +154,37 @@ h2{
 
 
     // Password validation
-    if(password.length<6 || password.length>12)
-    {
-        passwordError.innerHTML="Password must be between 6 and 12 characters"
-        valid=false
-    }
-    else
-    {
-        passwordError.innerHTML=""
-    }
+    var password=document.getElementById("password").value
+
+var hasUpper=/[A-Z]/.test(password)
+var hasLower=/[a-z]/.test(password)
+var hasSpecial=/[!@#$%^&*]/.test(password)
+
+passwordError.innerHTML=""
+
+if(password.length < 6 || password.length > 12)
+{
+passwordError.innerHTML += "Password must be 6-12 characters <br>"
+valid=false
+}
+
+if(!hasUpper)
+{
+passwordError.innerHTML += "At least one uppercase letter required <br>"
+valid=false
+}
+
+if(!hasLower)
+{
+passwordError.innerHTML += "At least one lowercase letter required <br>"
+valid=false
+}
+
+if(!hasSpecial)
+{
+passwordError.innerHTML += "At least one special character required <br>"
+valid=false
+}
 
 
     // Enable button only if valid
@@ -164,3 +193,4 @@ h2{
 </script>
 </body>
 </html>
+
