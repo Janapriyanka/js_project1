@@ -24,7 +24,7 @@
 <input type="password" id="password" placeholder="Enter password" onkeyup="validateForm()">
 <p id="passwordError" style="color:red"></p>
 
-<button id="submitBtn" type="button" disabled>Submit</button>
+<button id="submitBtn" onclick="submitForm()" type="button" disabled>Submit</button>
 
 </form>
 </div>
@@ -190,10 +190,20 @@ valid=false
     // Enable button only if valid
     submitBtn.disabled=!valid
 }
+    function submitForm(){
+
+alert("Registration successful")
+
+setTimeout(function(){
+location.reload()
+},2000)
+
+}
 
 </script>
 </body>
 </html>
+
 
 
 
