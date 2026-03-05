@@ -10,7 +10,7 @@
 
 <div class="container">
 <h2 class="title">Registration Form</h2>
-<form >
+<form onsubmit="return false;">
 
 <label>Name</label><br>
 <input type="text" id="name" placeholder="Enter your Name" onkeyup="validateForm()">
@@ -190,19 +190,18 @@ valid=false
     // Enable button only if valid
     submitBtn.disabled=!valid
 }
-    function submitForm(){
+function submitForm(){
 
 alert("Registration successful")
 
-setTimeout(function(){
 location.reload()
-},2000)
 
 }
 
 </script>
 </body>
 </html>
+
 
 
 
